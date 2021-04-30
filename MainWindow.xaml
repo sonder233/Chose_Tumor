@@ -1,0 +1,36 @@
+﻿<Window x:Class="ChoseTumor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChoseTumor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="692" Width="1000">
+    <Grid Margin="0,0,-0.4,36.4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="395*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox Name="imageListBox" ItemsSource="{Binding }"
+                 Width="{Binding ElementName=listBoxShowImages,Path=Width,Mode=OneWay}" Loaded="imageListBox_Loaded" Margin="20.2,10,9.6,82" Grid.Column="1">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="6"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Margin="3" Text="{Binding Name}" Width="100"/>
+                        <Image Margin="3" Source="{Binding Path}" Width="100" Height="100"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="就他了" Grid.Column="1" HorizontalAlignment="Left" Margin="473.2,598,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="下一个人" Grid.Column="1" HorizontalAlignment="Left" Margin="630.2,598,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="46.2,590,0,0" VerticalAlignment="Top" Width="363" SelectedIndex="0"/>
+        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="788.2,598,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
+        <Label x:Name="curPatient" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="46.2,559,0,0" VerticalAlignment="Top" Width="367"/>
+    </Grid>
+</Window>
