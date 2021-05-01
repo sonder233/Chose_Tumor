@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChoseTumor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="692" Width="1000">
+        Title="MainWindow" Height="734" Width="1000">
     <Grid Margin="0,0,-0.4,36.4">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -27,10 +27,11 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="就他了" Grid.Column="1" HorizontalAlignment="Left" Margin="473.2,598,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="下一个人" Grid.Column="1" HorizontalAlignment="Left" Margin="630.2,598,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
-        <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="46.2,590,0,0" VerticalAlignment="Top" Width="363" SelectedIndex="0"/>
-        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="788.2,598,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
-        <Label x:Name="curPatient" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="46.2,559,0,0" VerticalAlignment="Top" Width="367"/>
+        <Button x:Name="maskButton" Content="遮罩" Grid.Column="1" HorizontalAlignment="Left" Margin="477.2,641,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="27"/>
+        <Button Content="下一个人" Grid.Column="1" HorizontalAlignment="Left" Margin="577.2,640,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="10.2,590,0,0" VerticalAlignment="Top" Width="581" SelectedIndex="0"/>
+        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="904.2,598,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
+        <Label x:Name="curPatient" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="0.2,612,0,0" VerticalAlignment="Top" Width="524"/>
+        <Button Content="10张" Grid.Column="1" HorizontalAlignment="Left" Margin="368.2,641,0,0.4" Width="75" Click="Button_Click_3"/>
     </Grid>
 </Window>
