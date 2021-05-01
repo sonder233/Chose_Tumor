@@ -31,6 +31,7 @@ namespace ChoseTumor
         List<String> peopleList;
         List<String> pathList;
         int nowIndex = 0;
+        int peopleIndex = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -148,8 +149,8 @@ namespace ChoseTumor
             string temp = singelPath.Replace("301registration_jpg", "301registration_max");
             currentMaskSavePath = temp.Replace("\\flair\\" + singelImg, "");
             //图片所在路径
-            //string finalPath = singelPath.Replace("\\"+imgName[number].ToString(), "");
-            //getTenPic(finalPath, number);
+            string finalPath = singelPath.Replace("\\"+imgName[number].ToString(), "");
+            getTenPic(finalPath, number);
             //MessageBox.Show(singelImg);
             PicCut(singelPath);
         }
@@ -163,7 +164,10 @@ namespace ChoseTumor
                 string sourcePath = path + "\\"+i+".jpg";
                 string targetPath = sourcePath.Replace("301registration_jpg", "301registration_max");
                 File.Copy(sourcePath, targetPath);
-                list.Add(sourcePath);
+                File.Copy(sourcePath.Replace("flair", "t1"), targetPath.Replace("flair","t1"));
+                File.Copy(sourcePath.Replace("flair", "t1c"), targetPath.Replace("flair", "t1c"));
+                File.Copy(sourcePath.Replace("flair", "t2"), targetPath.Replace("flair", "t2"));
+                //list.Add(sourcePath);
             }
         }
         private MouseCallback MyMouseCallback;
@@ -218,7 +222,7 @@ namespace ChoseTumor
                 //MessageBox.Show(x.ToString());
                 OpenCvSharp.Point p0 = new OpenCvSharp.Point(x0, y0);
                 OpenCvSharp.Point p1 = new OpenCvSharp.Point(x1, y1);
-                getMask(p0, p1,peopleList[nowIndex/4]);
+                getMask(p0, p1,peopleList[nowIndex]);
                 //Cv2.Rectangle(img, p0, p1,Scalar.Red);
                 //Cv2.ImShow("chosenImg", img);
                 Cv2.WaitKey(0);
@@ -236,9 +240,11 @@ namespace ChoseTumor
             OpenCvSharp.Size size = new OpenCvSharp.Size(240,240);
             Mat whiteMask = new Mat(size,MatType.CV_8UC3,Scalar.Black);
             Cv2.Rectangle(whiteMask, p0, p1, Scalar.White,-1);
-            Cv2.ImShow("mask", whiteMask);
-            Cv2.ImWrite(currentMaskSavePath +"\\"+ peopleName + "_mask.jpg", whiteMask);
-            Cv2.WaitKey(1);
+            //Cv2.ImShow("mask", whiteMask);
+            //G:\\Brain_tumor\\301配准完毕\\dataset\\301registration_max\\baijingjun t2无法配准
+            string people = currentMaskSavePath.Split('\\')[5];
+            Cv2.ImWrite(currentMaskSavePath +"\\"+ people + "_mask.jpg", whiteMask);
+            //Cv2.WaitKey(1);
             
         }
         public void ChangeContent(String path)
